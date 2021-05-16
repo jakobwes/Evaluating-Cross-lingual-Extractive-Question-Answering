@@ -24,6 +24,9 @@ This finetunes for QA only specified layers + the QA head of a given language mo
 
 This is a small modification from the [QA-training-interface](https://github.com/huggingface/transformers/tree/master/examples/pytorch/question-answering) provided by Hugginface. It the layers, except for the head, of a given model, before training and deactives the very ambitious standard save-strategy (we ran into some memory issues because of that).
 
+## `visualisations.ipynb`
+
+This contains all the visualisation-functions used for presenting the results. It pulls the results from the GitHub-repo and creates plots. 
 
 In addition to this code we also used a cut-out-version of `QA_layer_probing_experiment.ipynb` for only MLQA-evaluation, for example of the model trained in `XLM_finetune.ipynb`. But since this code is just a cut-out, including it here would be repetitive.
 
