@@ -22,7 +22,8 @@ This finetunes for QA only specified layers + the QA head of a given language mo
 
 ## `run_qa.py`
 
-This is a small modification from the [QA-training-interface](https://github.com/huggingface/transformers/tree/master/examples/pytorch/question-answering) provided by Hugginface. It the layers, except for the head, of a given model, before training and deactives the very ambitious standard save-strategy (we ran into some memory issues because of that).
+This is a small modification from the [QA-training-interface](https://github.com/huggingface/transformers/tree/master/examples/pytorch/question-answering) provided by Hugginface. It does the training for QA. In addition we implemented, that before training it freezes the layers, except for the head, of a given model. Also in addition it deactives the very ambitious standard save-strategy (we ran into some memory issues because of that). It is used by `QA_layer_probing_experiment.ipynb`.
+
 
 ## `visualisations.ipynb`
 
