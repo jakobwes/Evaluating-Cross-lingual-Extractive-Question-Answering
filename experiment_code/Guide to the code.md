@@ -7,7 +7,7 @@ The source code for this project consists of several components. It makes extens
 
 The main component can be found in here. This code allows Question Answering (QA)-layer-probes to be attached after specified layers, trained on [SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/) and evaluated on the [MLQA-dataset](https://github.com/facebookresearch/MLQA). As output the experiment code gives out a big dictionary of results, that can easily be converted to json. 
 
-This code is essentially a "click-and-run-version" of the code explained in the notebook. The user can specify in the first two cells the layers he/she want to probe after, the MLQA-evaluation language-pairs, the Hugginface model-name to do probing on and the batch-size for training. This allows to split up the experiments between different users and only probe certain layers at a time.
+The user can specify in the first two cells the layers he/she want to probe after, the MLQA-evaluation language-pairs, the Hugginface model-name to do probing on and the batch-size for training. This allows to split up the experiments between different users and only probe certain layers at a time. Afterwards the code runs the training of the probes, whilst freezing the other layers, using the `run_qa.py`, and evaluates on MLQA for each specified language-pair.
 
 
 ## `XLM_finetune.ipynb`
@@ -17,12 +17,12 @@ This finetunes an XLM-RoBERTa-base model for QA-answering on squad v1.1 and save
 
 ## `finetune_specific_layers.ipynb`
 
-This finetunes for QA only specified layers + the QA head of a given language model with the squad v1.1 dataset and evaluates on MLQA. It is a small modification of `QA_layer_probing_experiment.ipynb`
+This finetunes only specified layers + a QA head of a given language model, using the squad v1.1 dataset and evaluating on MLQA. It is a small modification of `QA_layer_probing_experiment.ipynb`
 
 
 ## `run_qa.py`
 
-This is a small modification from the [QA-training-interface](https://github.com/huggingface/transformers/tree/master/examples/pytorch/question-answering) provided by Hugginface. It does the training for QA. In addition we implemented, that before training it freezes the layers, except for the head, of a given model. Also in addition it deactives the very ambitious standard save-strategy (we ran into some memory issues because of that). It is used by `QA_layer_probing_experiment.ipynb`.
+This is a small modification from the [QA-training-interface](https://github.com/huggingface/transformers/tree/master/examples/pytorch/question-answering) provided by Hugginface. It does the training for QA. In addition we implemented, that before training it freezes the layers, except for the head, of a given model (see line 546). Also in addition it deactives the very ambitious standard save-strategy (we ran into some memory issues because of that: import in line 43 and line 407). It is used by `QA_layer_probing_experiment.ipynb`.
 
 
 ## `visualisations.ipynb`
