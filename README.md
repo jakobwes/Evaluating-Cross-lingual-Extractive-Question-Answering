@@ -1,4 +1,4 @@
-# QA_layer_freeze
+# Evaluating Cross-lingual Extractive Question Answering
 
 This is the GitHub-repo for the project "Evaluating Cross-lingual Extractive Question Answering". From the abstract of the main report:
 
